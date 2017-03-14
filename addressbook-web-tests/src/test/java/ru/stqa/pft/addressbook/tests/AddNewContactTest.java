@@ -13,7 +13,7 @@ public class AddNewContactTest extends TestBase{
                                         "katerinina", "home", "Mari-El, Yoshkar-Ola",
                                         "katerinina@ngs.ru"));
         app.getContactHelper().submitNewContactCreation();
-        app.getNavigationHelper().gotoHomePage();
+        app.getNavigationHelper().returnHomePage();
     }
 
 }
