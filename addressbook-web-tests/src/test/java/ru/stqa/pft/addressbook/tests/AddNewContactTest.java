@@ -7,13 +7,13 @@ public class AddNewContactTest extends TestBase{
 
     @Test
     public void testAddNewContact() {
-        app.gotoHomePage();
-        app.initContactCreation();
-        app.fillContactForm(new ContactData("Ekaterina", "G.", "Samoshkina",
+        app.getNavigationHelper().gotoHomePage();
+        app.getContactHelper().initContactCreation();
+        app.getContactHelper().fillContactForm(new ContactData("Ekaterina", "G.", "Samoshkina",
                                         "katerinina", "home", "Mari-El, Yoshkar-Ola",
                                         "katerinina@ngs.ru"));
-        app.submitNewContactCreation();
-        app.gotoHomePage();
+        app.getContactHelper().submitNewContactCreation();
+        app.getNavigationHelper().gotoHomePage();
     }
 
 }
