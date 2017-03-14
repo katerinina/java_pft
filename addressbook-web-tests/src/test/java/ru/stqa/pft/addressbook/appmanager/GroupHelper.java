@@ -9,17 +9,15 @@ import ru.stqa.pft.addressbook.model.GroupData;
  */
 public class GroupHelper extends HelperBase{
 
-    private FirefoxDriver wd;
-
     public GroupHelper(FirefoxDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void returnToGroupPage() {
         click(By.linkText("group page"));
     }
 
-    private void click(By locator) {
+    public void click(By locator) {
         wd.findElement(locator).click();
     }
 
@@ -33,7 +31,7 @@ public class GroupHelper extends HelperBase{
         type(By.name("group_footer"), groupData.getFooter());
     }
 
-    private void type(By locator, String text) {
+    public void type(By locator, String text) {
         click(locator);
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
