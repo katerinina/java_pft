@@ -11,14 +11,14 @@ public class AddNewContactTest extends TestBase{
 
     @Test
     public void testAddNewContact() {
-        app.getNavigationHelper().gotoHomePage();
-        List<ContactData> before = app.getContactHelper().getContactList();
+        app.goTo().homePage();
+        List<ContactData> before = app.contact().list();
         ContactData contact = new ContactData("Ekaterina", "G.", "Samoshkina",
                 "katerinina", "home", "Mari-El, Yoshkar-Ola",
                 "katerinina@ngs.ru");
-        app.getContactHelper().createContact(contact);
-        app.getNavigationHelper().returnHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().create(contact);
+        app.goTo().returnHome();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size()+1);
 
         before.add(contact);
