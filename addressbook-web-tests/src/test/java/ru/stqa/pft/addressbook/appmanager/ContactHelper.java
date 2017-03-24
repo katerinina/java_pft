@@ -3,11 +3,11 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by user on 14.03.2017.
@@ -47,8 +47,8 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
 
-    public void selectContact(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
+    private void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
     }
 
     public void submitContactDeletion() {
@@ -65,14 +65,14 @@ public class ContactHelper extends HelperBase {
         submitNewContactCreation();
 
     }
-    public void modify(int index, ContactData contact) {
-        selectContact(index);
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
         initContactModification();
         fillContactForm(contact);
         submitContactModification();
     }
-    public void delete(int index) {
-        selectContact(index);
+     public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         submitContactDeletion();
         acceptContactDeletion();
     }
@@ -81,8 +81,8 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
             String firstname = element.findElement(By.xpath(".//td[3]")).getText();
