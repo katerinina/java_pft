@@ -20,8 +20,9 @@ public class AddNewContactTest extends TestBase{
                 .withCompany("home").withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru");
         app.contact().create(contact);
         app.goTo().returnHome();
+        //хэширование - делается быстрая проверка кол-во контактов после создания новой группы
+        assertThat(app.contact().count(), equalTo(before.size()+1));
         Contacts after = app.contact().all();
-        assertThat(after.size(), equalTo(before.size()+1));
         //вычисляется максимальный идентификатор
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));

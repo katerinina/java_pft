@@ -15,8 +15,9 @@ public class GroupCreationTest extends TestBase{
         Groups before = app.group().all();
         GroupData group = new GroupData().withName("TestGroup");
         app.group().create(group);
+        //хэширование - делается быстрая проверка кол-во групп после создания новой группы
+        assertThat(app.group().count(),equalTo(before.size()+1));
         Groups after = app.group().all();
-        assertThat(after.size(),equalTo(before.size()+1));
         //вычисляется максимальный идентификатор
         //group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
         assertThat(after, equalTo(

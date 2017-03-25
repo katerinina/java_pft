@@ -37,8 +37,9 @@ public class ContactModificationTest extends TestBase{
                 .withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru");
         app.contact().modify(contact);
         app.goTo().returnHome();
+        //хэширование - делается быстрая проверка кол-во контактов после модификации группы
+        assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size());
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
 }

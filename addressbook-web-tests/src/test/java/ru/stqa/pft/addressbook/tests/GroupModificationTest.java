@@ -37,8 +37,9 @@ public class GroupModificationTest extends TestBase {
         GroupData group = new GroupData().
                 withId(modifiedGroup.getId()).withName("TestGroup").withHeader("title").withFooter("bla-bla-bla");
         app.group().modify(group);
+        //хэширование - делается быстрая проверка кол-во групп после модификации группы
+        assertThat(app.group().count(),equalTo(before.size()));
         Groups after = app.group().all();
-        assertEquals(after.size(), before.size());
         assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
 
     }
