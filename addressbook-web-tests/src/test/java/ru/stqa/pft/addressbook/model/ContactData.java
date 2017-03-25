@@ -1,14 +1,19 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    int id = Integer.MAX_VALUE;;
-    private  String firstname;
-    private  String middlename;
-    private  String lastname;
-    private  String nickname;
-    private  String company;
-    private  String address;
-    private  String email;
+    int id = Integer.MAX_VALUE;
+    private String firstname;
+    private String middlename;
+    private String lastname;
+    private String nickname;
+    private String company;
+    private String address;
+    private String email;
+    private String homePhone;
+    private String mobilePhone;
+    private String workPhone;
+    private String allPhones;
+
 
     @Override
     public boolean equals(Object o) {
@@ -52,14 +57,19 @@ public class ContactData {
         return address;
     }
 
+    public String getAllPhones() { return allPhones; }
+
+    public String getHomePhone() { return homePhone; }
+
+    public String getMobilePhone() { return mobilePhone; }
+
+    public String getWorkPhone() { return workPhone; }
+
     public String getEmail() {
         return email;
     }
 
-    public int getId() {
-        return id;
-
-    }
+    public int getId() { return id; }
 
     @Override
     public String toString() {
@@ -107,6 +117,26 @@ public class ContactData {
 
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public ContactData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
+        return this;
+    }
+
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;
+    }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
         return this;
     }
 }

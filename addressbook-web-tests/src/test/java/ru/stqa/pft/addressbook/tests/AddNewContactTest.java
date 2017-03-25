@@ -17,7 +17,8 @@ public class AddNewContactTest extends TestBase{
         Contacts before = app.contact().all();
         ContactData contact = new ContactData()
                 .withFirstname("Ekaterina").withMiddlename("G.").withLastname("Samoshkina").withNickname("katerinina")
-                .withCompany("home").withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru");
+                .withCompany("home").withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru")
+                .withHomePhone("111").withMobilePhone("222").withWorkPhone("333");
         app.contact().create(contact);
         app.goTo().returnHome();
         //хэширование - делается быстрая проверка кол-во контактов после создания новой группы
