@@ -56,6 +56,5 @@ public class ContactPhoneAddressEmailTest extends TestBase{
     public  static String cleaned(String string){
         return string.replaceAll("\\s","").replaceAll("[-()]","");
     }
-   // public  static String cleanedEmails(String email){return email.replaceAll("\\s","").replaceAll("[-()]","");   }
 
 }

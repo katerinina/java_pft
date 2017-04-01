@@ -135,8 +135,6 @@ public class ContactHelper extends HelperBase {
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
                 .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address)
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
-
-
     }
 
     private void initContactModificationById(int id) {
@@ -145,9 +143,20 @@ public class ContactHelper extends HelperBase {
         List<WebElement> cells = row.findElements(By.tagName("td"));
         cells.get(7).findElement(By.tagName("a")).click();
 
-        //локатор для кнопки "полная форма контакта - человечек"
-        //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
     }
 
 
+    public ContactData infoFromDelailedForm(ContactData contact) {
+        initContactDetailedById(contact.getId());
+        WebElement element = wd.findElement(By.id("content"));
+        String allDetailes = element.getText();
+        wd.navigate().back();
+        return  new ContactData().withAllDetailes(allDetailes);
+
+
+    }
+
+    private void initContactDetailedById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']",id))).click();
+    }
 }
