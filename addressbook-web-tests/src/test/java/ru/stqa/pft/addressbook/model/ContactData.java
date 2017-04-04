@@ -1,6 +1,12 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+import java.io.File;
+@XStreamAlias("contacts")
 public class ContactData {
+    @XStreamOmitField
     int id = Integer.MAX_VALUE;
     private String firstname;
     private String middlename;
@@ -17,6 +23,16 @@ public class ContactData {
     private String allPhones;
     private String allEmails;
     private String allDetailes;
+    private File photo;
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
 
 
 

@@ -21,7 +21,7 @@ public class ContactDetailedTest extends TestBase {
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData()
                     .withFirstname("Ekaterina").withLastname("Samoshkina")
-                    .withNickname("katerinina").withAddress("Mari-El, Yoshkar-Ola")
+                    .withAddress("Mari-El, Yoshkar-Ola")
                     .withEmail("katerinina@ngs.ru").withEmail2("222@ru.ru").withEmail3("333@com.com")
                     .withHomePhone("111").withMobilePhone("222").withWorkPhone("333"));
             app.goTo().homePage();
@@ -41,9 +41,9 @@ public class ContactDetailedTest extends TestBase {
     }
 
     private String mergeAll(ContactData contact) {
-        String homePhone = "";
-        String mobilePhone = "";
-        String workPhone = "";
+        String homePhone = null;
+        String mobilePhone = null;
+        String workPhone = null;
         if (!contact.getHomePhone().equals("")) {
             homePhone = "H:" + contact.getHomePhone();
         }
@@ -61,7 +61,7 @@ public class ContactDetailedTest extends TestBase {
                 mobilePhone,
                 workPhone,
                 contact.getEmail(), contact.getEmail2(), contact.getEmail3())
-                .stream().filter((s) -> !s.equals(""))
+                .stream().filter((s) -> !(s == null || s.equals("")))
                 .map(ContactDetailedTest::cleaned)
                 .collect(Collectors.joining("\n"));
     }
