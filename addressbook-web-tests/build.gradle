@@ -10,3 +10,14 @@ dependencies{
     compile 'com.beust:jcommander:1.64'
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
 }
+
+task testGroups(type: Test){
+    useTestNG {
+        suites 'src/test/resurces/testng-groups.xml'
+    }
+}
+task testContacts(type: Test){
+    useTestNG {
+        suites 'src/test/resurces/testng-contacts.xml'
+    }
+}

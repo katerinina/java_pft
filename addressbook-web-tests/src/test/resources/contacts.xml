@@ -1,23 +1,23 @@
 <list>
   <contacts>
-    <firstname>ContactFirstname 0;</firstname>
-    <lastname>ContactLastname 0;</lastname>
-    <address>ContactAddress 0;</address>
-    <allPhones>999990;</allPhones>
-    <allEmails>email0@ggg.ru;</allEmails>
+    <firstname>ContactFirstname 0</firstname>
+    <lastname>ContactLastname 0</lastname>
+    <address>ContactAddress 0</address>
+    <email>email0@ggg.ru</email>
+    <homePhone>999990</homePhone>
   </contacts>
   <contacts>
-    <firstname>ContactFirstname 1;</firstname>
-    <lastname>ContactLastname 1;</lastname>
-    <address>ContactAddress 1;</address>
-    <allPhones>999991;</allPhones>
-    <allEmails>email1@ggg.ru;</allEmails>
+    <firstname>ContactFirstname 1</firstname>
+    <lastname>ContactLastname 1</lastname>
+    <address>ContactAddress 1</address>
+    <email>email1@ggg.ru</email>
+    <homePhone>999991</homePhone>
   </contacts>
   <contacts>
-    <firstname>ContactFirstname 2;</firstname>
-    <lastname>ContactLastname 2;</lastname>
-    <address>ContactAddress 2;</address>
-    <allPhones>999992;</allPhones>
-    <allEmails>email2@ggg.ru;</allEmails>
+    <firstname>ContactFirstname 2</firstname>
+    <lastname>ContactLastname 2</lastname>
+    <address>ContactAddress 2</address>
+    <email>email2@ggg.ru</email>
+    <homePhone>999992</homePhone>
   </contacts>
 </list>

@@ -53,28 +53,28 @@ public class ContactDataGenerator {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         String xml = xstream.toXML(contacts);
-        FileWriter writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+        try(FileWriter writer = new FileWriter(file)) {
+            writer.write(xml);
+        }
     }
 
     private static void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
-        FileWriter writer = new FileWriter(file);
-        for (ContactData contact : contacts) {
-            writer.write(String.format("%s%s%s%s%s\n", contact.getFirstname(), contact.getLastname(),
-                    contact.getAddress(), contact.getAllEmails(), contact.getAllPhones()));
+        try(FileWriter writer = new FileWriter(file)) {
+            for (ContactData contact : contacts) {
+                writer.write(String.format("%s;%s;%s;%s;%s;\n", contact.getFirstname(), contact.getLastname(),
+                        contact.getAddress(), contact.getAllEmails(), contact.getAllPhones()));
+            }
         }
-        writer.close();
     }
 
     private static List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withFirstname(String.format("ContactFirstname %s;", i))
-                    .withLastname(String.format("ContactLastname %s;", i))
-                    .withAddress(String.format("ContactAddress %s;", i))
-                    .withAllEmails(String.format("email%s@ggg.ru;", i))
-                    .withAllPhones(String.format("99999%s;", i)));
+            contacts.add(new ContactData().withFirstname(String.format("ContactFirstname %s", i))
+                    .withLastname(String.format("ContactLastname %s", i))
+                    .withAddress(String.format("ContactAddress %s", i))
+                    .withEmail(String.format("email%s@ggg.ru", i))
+                    .withHomePhone(String.format("99999%s", i)));
         }
         return contacts;
     }

@@ -20,8 +20,8 @@ public class ContactModificationTest extends TestBase{
         app.goTo().homePage();
         if(app.contact().all().size()==0){
         app.contact().create(new ContactData()
-                .withFirstname("Ekaterina").withMiddlename("G.").withLastname("Samoshkina").withNickname("katerinina")
-                .withCompany("home").withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru"));
+                .withFirstname("Ekaterina").withLastname("Samoshkina")
+                .withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru").withHomePhone("222555"));
         app.goTo().homePage();
     }
     }
@@ -32,9 +32,10 @@ public class ContactModificationTest extends TestBase{
         //возвращает случайный элемент множества
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData()
-                .withId(modifiedContact.getId()).withFirstname("Ekaterina").withMiddlename("G.")
-                .withLastname("Samoshkina").withNickname("katerinina").withCompany("home")
-                .withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru");
+                .withId(modifiedContact.getId()).withFirstname("Ekaterina")
+                .withLastname("Samoshkina")
+                .withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru")
+                .withHomePhone("222555");
         app.contact().modify(contact);
         app.goTo().returnHome();
         //хэширование - делается быстрая проверка кол-во контактов после модификации группы
