@@ -23,7 +23,7 @@ public class ContactDeletionTest extends TestBase {
     @BeforeMethod
     public void ensurePreconditions(){
         app.goTo().homePage();
-        if(app.contact().all().size()==0){
+        if(app.db().contacts().size()==0){
             app.contact().create(new ContactData()
                             .withFirstname("Ekaterina").withMiddlename("G.").withLastname("Samoshkina")
                             .withNickname("katerinina").withCompany("home").withAddress("Mari-El, Yoshkar-Ola")
@@ -33,14 +33,14 @@ public class ContactDeletionTest extends TestBase {
     }
     @Test
     public void testContactDeletion(){
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         //возвращает случайный элемент множества
         ContactData deletedContact = before.iterator().next();
         app.contact().delete(deletedContact);
         app.goTo().homePage();
         //хэширование - делается быстрая проверка кол-во контактов после удаления группы
         assertThat(app.contact().count(), equalTo(before.size()-1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(before.without(deletedContact)));
 
     }

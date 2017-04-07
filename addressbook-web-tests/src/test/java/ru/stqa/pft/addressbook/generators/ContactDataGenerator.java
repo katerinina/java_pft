@@ -69,12 +69,14 @@ public class ContactDataGenerator {
 
     private static List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        File foto= new File("src/test/resources/avatar.jpg");
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withFirstname(String.format("ContactFirstname %s", i))
                     .withLastname(String.format("ContactLastname %s", i))
                     .withAddress(String.format("ContactAddress %s", i))
                     .withEmail(String.format("email%s@ggg.ru", i))
-                    .withHomePhone(String.format("99999%s", i)));
+                    .withHomePhone(String.format("99999%s", i))
+                    .withPhoto(foto));
         }
         return contacts;
     }

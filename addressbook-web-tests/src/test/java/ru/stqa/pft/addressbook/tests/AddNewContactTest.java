@@ -43,12 +43,12 @@ public class AddNewContactTest extends TestBase{
     public void testAddNewContact(ContactData contact) {
         //File foto= new File("src/test/resources/avatar.jpg");
         app.goTo().homePage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         app.contact().create(contact);
         app.goTo().returnHome();
         //хэширование - делается быстрая проверка кол-во контактов после создания новой группы
         assertThat(app.contact().count(), equalTo(before.size()+1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         //вычисляется максимальный идентификатор
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
