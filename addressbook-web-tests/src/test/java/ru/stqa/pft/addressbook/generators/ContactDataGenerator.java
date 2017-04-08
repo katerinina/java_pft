@@ -73,9 +73,16 @@ public class ContactDataGenerator {
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withFirstname(String.format("ContactFirstname %s", i))
                     .withLastname(String.format("ContactLastname %s", i))
+                    .withMiddlename("G.")
+                    .withNickname(String.format("katerinina%s", i))
                     .withAddress(String.format("ContactAddress %s", i))
-                    .withEmail(String.format("email%s@ggg.ru", i))
-                    .withHomePhone(String.format("99999%s", i))
+                    .withEmail(String.format("email%s@111.ru", i))
+                    .withEmail2(String.format("email%s@222.ru", i))
+                    .withEmail3(String.format("email%s@333.ru", i))
+                    .withHomePhone(String.format("11111%s", i))
+                    .withWorkPhone(String.format("22222%s", i))
+                    .withMobilePhone(String.format("33333%s", i))
+                    .withCompany("Home")
                     .withPhoto(foto));
         }
         return contacts;

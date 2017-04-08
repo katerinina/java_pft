@@ -33,18 +33,19 @@ public class ContactModificationTest extends TestBase{
         Contacts before = app.db().contacts();
         //возвращает случайный элемент множества
         ContactData modifiedContact = before.iterator().next();
-        File foto= new File("src/test/resources/avatar.jpg");
         ContactData contact = new ContactData()
-                .withId(modifiedContact.getId()).withFirstname("Ekaterina")
-                .withLastname("Samoshkina")
-                .withAddress("Mari-El, Yoshkar-Ola").withEmail("katerinina@ngs.ru")
-                .withHomePhone("222555")
-                .withPhoto(foto);
+                .withId(modifiedContact.getId()).withFirstname("M-Ekaterina").withLastname("M-Samoshkina").withMiddlename("M-G.")
+                .withAddress("M-Mari-El, Yoshkar-Ola").withEmail("M-katerinina@ngs.ru").withEmail2("M-222@ngs.ru").withEmail3("M-333@ngs.ru")
+                .withHomePhone("M-222555").withWorkPhone("M-333333").withMobilePhone("M-444444").withCompany("M-home").withNickname("M-katerinina")
+                .withPhoto(new File("src/test/resources/avatar.jpg"));
         app.contact().modify(contact);
         app.goTo().returnHome();
         //хэширование - делается быстрая проверка кол-во контактов после модификации группы
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.db().contacts();
-        assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+        System.out.println(before.without(modifiedContact).withAdded(contact));
+        //before.without(modifiedContact).withAdded(contact);
+        assertThat(after,equalTo(before.without(modifiedContact).withAdded(contact)));
+
     }
 }

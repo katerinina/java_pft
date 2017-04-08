@@ -1,26 +1,47 @@
 <list>
   <contacts>
     <firstname>ContactFirstname 0</firstname>
+    <middlename>G.</middlename>
     <lastname>ContactLastname 0</lastname>
+    <nickname>katerinina0</nickname>
+    <company>Home</company>
     <address>ContactAddress 0</address>
-    <email>email0@ggg.ru</email>
-    <homePhone>999990</homePhone>
+    <email>email0@111.ru</email>
+    <email2>email0@222.ru</email2>
+    <email3>email0@333.ru</email3>
+    <homePhone>111110</homePhone>
+    <mobilePhone>333330</mobilePhone>
+    <workPhone>222220</workPhone>
     <photo>src\test\resources\avatar.jpg</photo>
   </contacts>
   <contacts>
     <firstname>ContactFirstname 1</firstname>
+    <middlename>G.</middlename>
     <lastname>ContactLastname 1</lastname>
+    <nickname>katerinina1</nickname>
+    <company>Home</company>
     <address>ContactAddress 1</address>
-    <email>email1@ggg.ru</email>
-    <homePhone>999991</homePhone>
+    <email>email1@111.ru</email>
+    <email2>email1@222.ru</email2>
+    <email3>email1@333.ru</email3>
+    <homePhone>111111</homePhone>
+    <mobilePhone>333331</mobilePhone>
+    <workPhone>222221</workPhone>
     <photo>src\test\resources\avatar.jpg</photo>
   </contacts>
   <contacts>
     <firstname>ContactFirstname 2</firstname>
+    <middlename>G.</middlename>
     <lastname>ContactLastname 2</lastname>
+    <nickname>katerinina2</nickname>
+    <company>Home</company>
     <address>ContactAddress 2</address>
-    <email>email2@ggg.ru</email>
-    <homePhone>999992</homePhone>
+    <email>email2@111.ru</email>
+    <email2>email2@222.ru</email2>
+    <email3>email2@333.ru</email3>
+    <homePhone>111112</homePhone>
+    <mobilePhone>333332</mobilePhone>
+    <workPhone>222222</workPhone>
     <photo>src\test\resources\avatar.jpg</photo>
   </contacts>
 </list>
