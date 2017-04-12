@@ -52,7 +52,7 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
 
-    private void selectContactById(int id) {
+    public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
     }
 
@@ -157,5 +157,14 @@ public class ContactHelper extends HelperBase {
 
     private void initContactDetailedById(int id) {
         wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']",id))).click();
+    }
+
+    public void addContactToGroup(int id) {
+        wd.findElement(By.cssSelector("select[name='to_group']>option[value='" + id + "']")).click();
+        click(By.cssSelector("input[name='add']"));
+    }
+
+    public void removeContactFromGroup(int id) {
+        wd.findElement(By.cssSelector("select[name='group']>option[value='" + id + "']")).click();
     }
 }
