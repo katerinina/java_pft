@@ -1,58 +1,26 @@
 package ru.rambler.tests;
 
+
+import org.apache.http.util.Asserts;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class VerifyTests {
-    ChromeDriver wd;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
-        wd = new ChromeDriver();
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        wd.get("https://id.rambler.ru/account/registration");
-    }
+public class VerifyTests extends TestBase{
 
     @Test
-    public void testVerify() {
-        type(By.id("login.username"), "ekaterina_samoshkina");
+    public void testVerifyUserNameAndPassword() {
+        type(By.id("login.username"), "ekaterina_samosh");
         type(By.id("password.main"),"6574hfjruyvbnblogu");
+        assertFalse(isElementPresent(By.xpath("//div[1]/div/div/form/section[3]/div/div/div[2]")));
+        assertTrue(isElementPresent(By.xpath("//div[@class='success-2143439648']//div[.='Сложный пароль']")));
     }
 
 
-    public void type(By locator, String text) {
-        click(locator);
-        if (text != null) {
-            String existingText = wd.findElement(locator).getAttribute("value");
-            if (!text.equals(existingText)) {
-                wd.findElement(locator).clear();
-                wd.findElement(locator).sendKeys(text);
-            }
-        }
-    }
-
-    public void click(By locator) {
-        wd.findElement(locator).click();
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
-    }
-
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
 }
