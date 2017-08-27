@@ -7,23 +7,27 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import java.util.concurrent.TimeUnit;
+
+
 
 public class TestBase {
 
     ChromeDriver wd;
 
-    @BeforeMethod
+    @BeforeSuite
     public void setUp() throws Exception {
         wd = new ChromeDriver();
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wd.get("https://id.rambler.ru/account/registration");
     }
 
 
-    @AfterMethod
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
         wd.quit();
     }
