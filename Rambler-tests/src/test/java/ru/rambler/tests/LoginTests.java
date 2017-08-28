@@ -15,7 +15,8 @@ public class LoginTests extends HttpSession {
     @Test
     public void testLogin() throws IOException {
         HttpSession session = new HttpSession();
-        //session.login("samoshkina_ekaterina","000katerina");
+        session.login("samoshkina_ekaterina","000katerina");
+
         assertTrue(session.login("samoshkina_ekaterina","000katerina"));
     }
 
