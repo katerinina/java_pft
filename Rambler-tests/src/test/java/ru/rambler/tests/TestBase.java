@@ -6,10 +6,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,15 +16,15 @@ public class TestBase {
 
     ChromeDriver wd;
 
-    @BeforeSuite
+    @BeforeClass
     public void setUp() throws Exception {
         wd = new ChromeDriver();
-        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         wd.get("https://id.rambler.ru/account/registration");
     }
 
 
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         wd.quit();
     }
@@ -62,5 +59,11 @@ public class TestBase {
             return false;
         }
 
+    }
+
+    protected void addUserName(String username, String domain) {
+        type(By.id("login.username"), username);
+        click(By.name("login.domain"));
+        click(By.xpath("//div[@class='menu-3152310865']//div[.='@"+domain+"']"));
     }
 }
