@@ -11,7 +11,6 @@ import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
 
-
 public class TestBase {
 
     ChromeDriver wd;
@@ -20,7 +19,22 @@ public class TestBase {
     public void setUp() throws Exception {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+    }
+
+    public void goToRegistrationPage() {
+        if (isElementPresent(By.xpath("//div[1]/div/div/header/h1"))) {
+            return;
+        }
         wd.get("https://id.rambler.ru/account/registration");
+
+    }
+
+    public void goToMailPage() {
+        if (isElementPresent(By.xpath("//h2[@class='form__title']//span[.='Войти в почту']"))) {
+            return;
+        }
+        wd.get("https://mail.rambler.ru");
     }
 
 
@@ -28,6 +42,7 @@ public class TestBase {
     public void tearDown() {
         wd.quit();
     }
+
     public void type(By locator, String text) {
         click(locator);
         if (text != null) {
@@ -51,10 +66,11 @@ public class TestBase {
             return false;
         }
     }
+
     protected boolean isElementPresent(By locator) {
         try {
             wd.findElement(locator);
-            return  true;
+            return true;
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -64,6 +80,6 @@ public class TestBase {
     protected void addUserName(String username, String domain) {
         type(By.id("login.username"), username);
         click(By.name("login.domain"));
-        click(By.xpath("//div[@class='menu-3152310865']//div[.='@"+domain+"']"));
+        click(By.xpath("//div[@class='menu-3152310865']//div[.='@" + domain + "']"));
     }
 }
