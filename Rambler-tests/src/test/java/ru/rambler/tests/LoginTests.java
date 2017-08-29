@@ -2,22 +2,18 @@ package ru.rambler.tests;
 
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static org.testng.Assert.assertTrue;
 
 /**
  * Created by user on 27.08.2017.
  */
-//public class LoginTests extends TestImap4 {
+public class LoginTests extends TestImap4 {
 
+    //тест авторизуется на почту @rambter.ru по указанному логину и паролю и проверяет наличие (непрочитанных) писем
+    @Test
+    public void testNewMailPresent() throws Exception {
+        assertTrue(newMailCount("samoshkina_ekaterina", "000katerina") > 0);
 
-    //@Test
- //   public void testLogin() throws IOException {
-//        HttpSession session = new HttpSession();
-//        session.login("samoshkina_ekaterina","000katerina");
-//
-//        assertTrue(session.login("samoshkina_ekaterina","000katerina"));
-//    }
+    }
 
-//}
+}
