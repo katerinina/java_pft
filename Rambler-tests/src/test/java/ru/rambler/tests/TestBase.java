@@ -22,6 +22,7 @@ public class TestBase {
 
     }
 
+    //переход на страницу регистрации Rambler
     public void goToRegistrationPage() {
         if (isElementPresent(By.xpath("//div[1]/div/div/header/h1"))) {
             return;
@@ -30,6 +31,7 @@ public class TestBase {
 
     }
 
+    //переход на страницу авторизации почты mail.rambler.ru
     public void goToMailPage() {
         if (isElementPresent(By.xpath("//h2[@class='form__title']//span[.='Войти в почту']"))) {
             return;
@@ -67,6 +69,7 @@ public class TestBase {
         }
     }
 
+    //проверка присутствия элемента на странице
     protected boolean isElementPresent(By locator) {
         try {
             wd.findElement(locator);
@@ -77,7 +80,8 @@ public class TestBase {
 
     }
 
-    protected void addUserName(String username, String domain) {
+    //заполнение полей регистрации нового пользователя
+    protected void addNewUserName(String username, String domain) {
         type(By.id("login.username"), username);
         click(By.name("login.domain"));
         click(By.xpath("//div[@class='menu-3152310865']//div[.='@" + domain + "']"));

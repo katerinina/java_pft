@@ -22,19 +22,18 @@ public class AuthorizationTest extends TestBase{
     public void testAuthorizationToMail() {
         //переход на страницу авторизации на почтовый сервер
         goToMailPage();
-        //заполение полей авторизации
+        //заполнение полей авторизации
         type(By.name("login"),"samoshkina_ekaterina");
         type(By.id("form_password"),"000katerina");
+        //выбираем из списка "@rambler.ru"(он первый в списке)
         click(By.xpath("//form[@class='form']/div[1]/div[2]/div/select//option[1]"));
         //нажатие на кнопку "Войти на почту"
         click(By.cssSelector("button.form-button.form-button_submit"));
-        //проверка, что действительно находимся на странице почты нужного пользователя
-        //assertTrue(isElementPresent(By.xpath("//span[@class='rambler-topline__user-name']//div[.='Ekaterina Samoshkina'")));
-//                //div[@class='error-1781068642']//div[.='Пользователь уже существует']
-//                body.contains(String.format("<span class=\"rambler-topline__user-name\">Ekaterina Samoshkina</span>");
-//
+        //проверка, что действительно находимся на странице почты (есть папка "Входящие")
+        assertTrue(isElementPresent(By.xpath("//ul[@class='_Menu-root_7AJ']//span[.='Входящие']")));
+        //проверка, что элемент "кол-во новых писем" присутствует
+        assertTrue(isElementPresent(By.cssSelector("span.style-counter_2zl")));
 
-        //wd.findElement(By.cssSelector("span.style-counter_2zl")).click();
     }
     
     }

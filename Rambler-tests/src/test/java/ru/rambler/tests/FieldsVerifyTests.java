@@ -13,7 +13,7 @@ public class FieldsVerifyTests extends TestBase {
     @Test
     public void testVerifyUserName() {
         goToRegistrationPage();
-        addUserName("ekaterina_samoshkina", "lenta.ru");
+        addNewUserName("ekaterina_samoshkina", "lenta.ru");
         //чтобы произошла валидация, необходимо снять фокус с поля(особенность Selenium),поэтому кликаю на предыдущее поле
         click(By.id("login.username"));
         assertFalse(isElementPresent(By.xpath("//div[@class='error-1781068642']//div[.='Пользователь уже существует']")));
@@ -36,7 +36,7 @@ public class FieldsVerifyTests extends TestBase {
     @Test
     public void testVerifyInvalidUserName() {
         goToRegistrationPage();
-        addUserName("ekaterina_samoshkina", "rambler.ru");
+        addNewUserName("ekaterina_samoshkina", "rambler.ru");
         //чтобы произошла валидация, необходимо снять фокус с поля(особенность Selenium),поэтому кликаю на предыдущее поле
         click(By.id("login.username"));
         assertTrue(isElementPresent(By.xpath("//div[@class='error-1781068642']//div[.='Пользователь уже существует']")));
